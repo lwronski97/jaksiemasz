@@ -11,7 +11,7 @@ public class CorrectString {
     }
 
     public boolean correctEmail(String email)  {
-        Pattern p = Pattern.compile(".*@.*\\....");
+        Pattern p = Pattern.compile(".*@.*\\.[alphum]*");
         Matcher m = p.matcher(email);
         return m.find();
     }

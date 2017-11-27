@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Function;
 
 public class Main {
 
@@ -16,6 +15,7 @@ public class Main {
 
     public static void main(String[] args)  {
 
+        Person a = new Person("sddsd","dsdss", "mail@d2ssd.ddd");
         AbstractFactory pearsonFactory = FactoryProducer.getFactory("Person");
         List<Person> toSort = new ArrayList<>();
         Integer listSize = 1000;

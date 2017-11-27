@@ -1,5 +1,7 @@
 package FactoryPerson;
 
+import com.google.common.base.Preconditions;
+
 public class Person implements PersonInterface {
 
     private String name;
@@ -14,23 +16,17 @@ public class Person implements PersonInterface {
     }
 
     private String checkName(String name) {
-        if ( name == null || checkString.checkIfHaveNumbers(name)) {
-            throw new IllegalArgumentException("Name is illegal");
-        }
+        Preconditions.checkArgument( ( name != null && !checkString.checkIfHaveNumbers(name)), "Name is illegal" );
         return name;
     }
 
     private String checkSurname(String surname) {
-        if ( surname == null || checkString.checkIfHaveNumbers(surname)) {
-            throw new IllegalArgumentException("Surname is illegal");
-        }
+        Preconditions.checkArgument( ( surname != null && !checkString.checkIfHaveNumbers(surname)),"Surname is illegal");
         return surname;
     }
 
     private String checkEmail(String email)  {
-        if( email == null || !checkString.correctEmail(email)){
-            throw new IllegalArgumentException("Email is illegal");
-        }
+        Preconditions.checkArgument( ( email != null && checkString.correctEmail(email)),"Email is illegal");
         return email;
     }
 
