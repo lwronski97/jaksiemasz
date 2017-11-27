@@ -1,12 +1,9 @@
 package FactoryPerson;
 
-import org.omg.CORBA.ORBPackage.InvalidName;
-
 public class PersonFactory extends AbstractFactory {
-
+    private final static RandomString randomString = new RandomString();
     @Override
-    public Person getPerson() throws InvalidName {
-        RandomString r = new RandomString();
-        return new Person(r.getName(), r.getSurname(), r.getEmail());
+    public Person getPerson() {
+        return new Person(randomString.getName(), randomString.getSurname(), randomString.getEmail());
     }
 }

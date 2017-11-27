@@ -6,7 +6,6 @@ public class FactoryProducer {
         if(choice.equalsIgnoreCase("Person")){
             return new PersonFactory();
         }
-
         return null;
     }
 }

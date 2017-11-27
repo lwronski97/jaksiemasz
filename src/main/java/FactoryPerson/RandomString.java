@@ -4,11 +4,11 @@ import java.util.Random;
 
 public class RandomString {
 
-    static Random r = new Random();
-    static String alphabet = "abcdefghijklmnopqrstuvwxyz";
+    final static Random r = new Random();
+    final static String alphabet = "abcdefghijklmnopqrstuvwxyz";
 
     private String generateString( int length ) {
-        StringBuilder newString = new StringBuilder();
+        StringBuffer newString = new StringBuffer();
         for ( int i = 0; i < length; i++ ) {
             newString.append(alphabet.charAt(r.nextInt(alphabet.length())));
         }
@@ -24,9 +24,10 @@ public class RandomString {
     }
 
     public String getEmail(){
-        return generateString(
-                r.nextInt(8)+3) +
-                "@" + generateString(r.nextInt(3)+3) +
-                "." + generateString(3);
+        return new StringBuffer().append(generateString(r.nextInt(8)+3)).
+                append("@").
+                append(generateString(r.nextInt(3)+3)).
+                append(".").
+                append(generateString(3)).toString();
     }
 }

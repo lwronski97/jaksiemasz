@@ -1,41 +1,37 @@
 package FactoryPerson;
 
-import org.omg.CORBA.ORBPackage.InvalidName;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class Person implements PersonInterface {
 
     private String name;
     private String surname;
     private String email;
+    private final static CorrectString checkString = new CorrectString();
 
-    public Person(String name, String surname, String email) throws InvalidName {
-        checkIfHaveNumbers(name);
-        checkIfHaveNumbers(surname);
-        checkEmail(email);
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
+    public Person(String name, String surname, String email)  {
+        this.name = checkName(name);
+        this.surname = checkSurname(surname);
+        this.email =  checkEmail(email);
     }
 
-    private void checkEmail(String email) throws InvalidName {
-        Pattern p = Pattern.compile(".*@.*\\....");
-        Matcher m = p.matcher(email);
-        if(!m.find()){
-            throw new InvalidName(email);
+    private String checkName(String name) {
+        if ( name == null || checkString.checkIfHaveNumbers(name)) {
+            throw new IllegalArgumentException("Name is illegal");
         }
-
+        return name;
     }
 
-    private void  checkIfHaveNumbers(String name) throws InvalidName {
-        Pattern p = Pattern.compile("([0-9])");
-        Matcher m = p.matcher(name);
-
-        if(m.find()){
-            throw new InvalidName(name);
+    private String checkSurname(String surname) {
+        if ( surname == null || checkString.checkIfHaveNumbers(surname)) {
+            throw new IllegalArgumentException("Surname is illegal");
         }
+        return surname;
+    }
+
+    private String checkEmail(String email)  {
+        if( email == null || !checkString.correctEmail(email)){
+            throw new IllegalArgumentException("Email is illegal");
+        }
+        return email;
     }
 
     @Override

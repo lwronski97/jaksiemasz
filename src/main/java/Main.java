@@ -2,7 +2,6 @@ import FactoryPerson.AbstractFactory;
 import FactoryPerson.FactoryProducer;
 import FactoryPerson.Person;
 import com.google.common.collect.Ordering;
-import org.omg.CORBA.ORBPackage.InvalidName;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -10,16 +9,18 @@ import java.util.Collections;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws InvalidName {
 
 
-        AbstractFactory personFactory = FactoryProducer.getFactory("Person");
 
+    public static void main(String[] args)  {
+
+        AbstractFactory pearsonFactory = FactoryProducer.getFactory("Person");
         List<Person> toSort = new ArrayList<>();
+        Integer listSize = 1000;
 
-        for ( int i = 0; i < 1000; i++ ) {
-            Person newperson = personFactory.getPerson();
-            toSort.add(newperson);
+        for ( int i = 0; i < listSize; i++ ) {
+            Person newpearson = pearsonFactory.getPerson();
+            toSort.add(newpearson);
         }
 
         Ordering<Person> byLength = new OrderingByLenght();
