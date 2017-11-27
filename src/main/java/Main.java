@@ -5,8 +5,10 @@ import com.google.common.collect.Ordering;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Function;
 
 public class Main {
 
@@ -23,7 +25,15 @@ public class Main {
             toSort.add(newpearson);
         }
 
-        Ordering<Person> byLength = new OrderingByLenght();
+        Ordering<Person> byLength = Ordering.natural().lexicographical().onResultOf(new com.google.common.base.Function<Person, Iterable<Comparable>>() {
+            @Nullable
+            @Override
+            public Iterable<Comparable> apply(@Nullable Person input) {
+                String names[] = {input.getName(),input.getSurname(),input.getEmail()};
+                Iterable<Comparable> iterable = Arrays.asList(names);
+                return iterable;
+            }
+        });
         Collections.sort(toSort, byLength);
 
         for ( Person person : toSort){
@@ -32,16 +42,4 @@ public class Main {
 
     }
 
-    private static class OrderingByLenght extends Ordering<Person> {
-        @Override
-        public int compare(@Nullable Person left, @Nullable Person right) {
-            if ( left.getName().compareTo(right.getName()) == 0 ) {
-                if ( left.getSurname().compareTo(right.getSurname()) == 0) {
-                    return left.getEmail().compareTo(right.getEmail());
-                }
-                else return  left.getSurname().compareTo(right.getSurname());
-            }
-            else return  left.getName().compareTo(right.getName());
-        }
-    }
 }
