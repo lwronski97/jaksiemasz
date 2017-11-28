@@ -1,4 +1,4 @@
-package FactoryPerson;
+package helpclasses;
 
 import java.util.Random;
 
@@ -8,7 +8,7 @@ public class RandomString {
     final static String alphabet = "abcdefghijklmnopqrstuvwxyz";
 
     private String generateString( int length ) {
-        StringBuffer newString = new StringBuffer();
+        StringBuilder newString = new StringBuilder();
         for ( int i = 0; i < length; i++ ) {
             newString.append(alphabet.charAt(r.nextInt(alphabet.length())));
         }
@@ -24,10 +24,10 @@ public class RandomString {
     }
 
     public String getEmail(){
-        return new StringBuffer().append(generateString(r.nextInt(8)+3)).
-                append("@").
-                append(generateString(r.nextInt(3)+3)).
-                append(".").
-                append(generateString(3)).toString();
+        return generateString(r.nextInt(8)+3)
+                + "@"
+                + generateString(r.nextInt(3)+3)
+                + "."
+                + generateString(3);
     }
 }

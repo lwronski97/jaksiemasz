@@ -1,45 +1,46 @@
-import FactoryPerson.AbstractFactory;
-import FactoryPerson.FactoryProducer;
-import FactoryPerson.Person;
-import com.google.common.collect.Ordering;
-
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.time.temporal.Temporal;
+import java.util.Random;
 
 public class Main {
 
-
-
     public static void main(String[] args)  {
 
-        Person a = new Person("sddsd","dsdss", "mail@d2ssd.ddd");
-        AbstractFactory pearsonFactory = FactoryProducer.getFactory("Person");
-        List<Person> toSort = new ArrayList<>();
-        Integer listSize = 1000;
+//        TeamManager A = new TeamManager("A",EmployeeType.Manager,2);
+//        TeamManager B = new TeamManager("B",EmployeeType.Manager,2);
+//        TeamManager C = new TeamManager("C",EmployeeType.Manager,2);
+//
+//        A.hire(B);
+//        A.hire(C);
+//
+//        Developer D = new Developer("D",EmployeeType.Developer);
+//        Developer E = new Developer("E",EmployeeType.Developer);
+//
+//        B.hire(D);
+//        B.hire(E);
+//
+//        Developer F = new Developer("F",EmployeeType.Developer);
+//        Developer G = new Developer("G",EmployeeType.Developer);
+//
+//        C.hire(F);
+//        C.hire(G);
+//
+////        System.out.println(A);
+//
+//        Task A1 = new Task("sdssdds", 10);
+//        Task A2 = new Task("sd2323ssdds", 20);
+//
+//        B.assignTask(A1);
+//        A.assignTask(A2);
+//        A.assignTask(A2);
+//        A.assignTask(A2);
+//        A.assignTask(A1);
+//        A.assignTask(A2);
+//        A.assignTask(A1);
+//        A.assignTask(A1);
+//        System.out.println(A);
 
-        for ( int i = 0; i < listSize; i++ ) {
-            Person newpearson = pearsonFactory.getPerson();
-            toSort.add(newpearson);
-        }
-
-        Ordering<Person> byLength = Ordering.natural().lexicographical().onResultOf(new com.google.common.base.Function<Person, Iterable<Comparable>>() {
-            @Nullable
-            @Override
-            public Iterable<Comparable> apply(@Nullable Person input) {
-                String names[] = {input.getName(),input.getSurname(),input.getEmail()};
-                Iterable<Comparable> iterable = Arrays.asList(names);
-                return iterable;
-            }
-        });
-        Collections.sort(toSort, byLength);
-
-        for ( Person person : toSort){
-            System.out.println(person);
-        }
-
+         CompanyFactory companyFactory = new CompanyFactory();
+         companyFactory.generateCompany(10);
     }
 
 }
