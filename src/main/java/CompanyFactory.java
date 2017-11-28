@@ -16,16 +16,15 @@ public class CompanyFactory {
         listRandomTask = new ArrayList<>();
     }
 
-    public TeamManager generateCompany(int size){
+    public Employee generateCompany(int size){
 
-        randomManager(size/3);
+        listRandomManager = employeeFactory.randomManagerList(size/3);
         hireManager(size/3);
-        randomDeveloper(size);
+        listRandomDeveloper = employeeFactory.randomDeveloperList(size);
         hireDeveloper(size);
-        randomTask(size);
+        listRandomTask = employeeFactory.randomTaskList(size);
         assignTask(size);
-        System.out.println(listRandomManager.get(0));
-        return employeeFactory.randomTeamManager();
+        return listRandomManager.get(0);
     }
 
     private void assignTask(int size) {
@@ -47,24 +46,6 @@ public class CompanyFactory {
         for ( int i = 1; i < size; i++) {
             TeamManager randomManager = (TeamManager) listRandomManager.get(RANDOM.nextInt(i));
             randomManager.hire(listRandomManager.get(i));
-        }
-    }
-
-    private void randomManager(int size){
-        for ( int i = 0; i < size; i++){
-            listRandomManager.add( employeeFactory.randomTeamManager());
-        }
-    }
-
-    private void randomTask(int size) {
-        for ( int i = 0; i < size; i++){
-            listRandomTask.add( employeeFactory.randomTask());
-        }
-    }
-
-    private void randomDeveloper(int size) {
-        for ( int i = 0; i < size; i++){
-            listRandomDeveloper.add( employeeFactory.randomDeveloper());
         }
     }
 
