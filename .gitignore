@@ -1,7 +1,11 @@
 .gradle
 .idea
-/build/
-/out/
-
+build
+out
+gradle
+.gitignore
+gradlew
+gradlew.bat
+settings.gradle
 
 
