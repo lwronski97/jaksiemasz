@@ -1,12 +1,12 @@
-import java.time.temporal.Temporal;
-import java.util.Random;
 
 public class Main {
 
     public static void main(String[] args)  {
 
         CompanyFactory companyFactory = new CompanyFactory();
-        System.out.println(companyFactory.generateCompany(10));
+        System.out.println(companyFactory.generateCompany(100));
+
+        smallTest();
 
     }
 
@@ -42,5 +42,9 @@ public class Main {
         A.assignTask(A1);
         A.assignTask(A1);
         System.out.println(A);
+
+        System.out.println(B);
+
+        System.out.println(C);
     }
 }

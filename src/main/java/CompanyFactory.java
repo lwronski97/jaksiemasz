@@ -41,7 +41,6 @@ public class CompanyFactory {
         }
     }
 
-
     private void hireManager(int size) {
         for ( int i = 1; i < size; i++) {
             TeamManager randomManager = (TeamManager) listRandomManager.get(RANDOM.nextInt(i));

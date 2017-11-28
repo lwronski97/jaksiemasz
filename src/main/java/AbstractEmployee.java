@@ -24,8 +24,7 @@ public abstract class AbstractEmployee implements Employee{
 
     @Override
     public void setIndent(String indent){
-        this.indent = indent + "    ";
-        this.indent = indent + "        ";
+        this.indent = indent;
     }
 
     @Override

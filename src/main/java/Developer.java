@@ -31,6 +31,7 @@ public class Developer extends AbstractEmployee {
         for ( Task task: listTask){
             string.append(this.getIndent() + this.getIndent() +  task.toString() + "\n") ;
         }
+        this.setIndent("");
         return string.toString();
     }
 

@@ -55,9 +55,10 @@ public class TeamManager extends AbstractEmployee implements Manager {
     public String toString(){
         StringBuilder string = new StringBuilder(this.getIndent() + "TeamManager: " + this.getName() + " is the boss\n");
         for ( Employee employee: this.subordinates){
-            employee.setIndent(this.getIndent());
-            string.append(this.getIndent() + employee.toString());
+            employee.setIndent(this.getIndent() + "    ");
+            string.append( this.getIndent() + employee.toString());
         }
+        this.setIndent("");
         return string.toString();
     }
 }
