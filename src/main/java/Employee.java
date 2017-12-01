@@ -6,4 +6,7 @@ public interface Employee {
     Report reportWork();
     void setIndent(String indent);
     String getIndent();
+    Integer getTimeWork();
+    void setParent(Employee employee);
+    void updateTimeWork(Integer timeWork);
 }

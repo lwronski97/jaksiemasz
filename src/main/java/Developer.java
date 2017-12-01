@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Developer extends AbstractEmployee {
@@ -10,19 +9,16 @@ public class Developer extends AbstractEmployee {
         super(name, role);
     }
 
-    public List<Task> getlistTask() {
-        return this.listTask;
-    }
-
     @Override
     public void assignTask(Task task) {
         listTask.add(task);
+        updateTimeWork(task.getTimeTask());
         System.out.println("Developer: " + this.getName() + " realize: " + task.getNameTask());
     }
 
     @Override
     public Report reportWork() {
-        return new Report(Arrays.asList(this));
+        return new Report(this);
     }
 
     @Override

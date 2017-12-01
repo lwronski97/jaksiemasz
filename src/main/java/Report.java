@@ -3,31 +3,13 @@ import java.util.List;
 
 public class  Report {
 
-    private List<Employee> listTask = new ArrayList<>();
+    private Employee employee;
 
-    public Report(List<Employee> listTask) {
-        this.listTask = listTask;
+    public Report(Employee employee) {
+        this.employee = employee;
     }
 
-    public Integer countTimeWork() {
-        Integer TimeWork = 0;
-        for ( Employee employee : listTask){
-            if ( employee.getRole() == EmployeeType.Developer) {
-                TimeWork += countTimeDeveloper((Developer) employee);
-            }
-            if ( employee.getRole() == EmployeeType.Manager) {
-                TimeWork += employee.reportWork().countTimeWork();
-            }
-        }
-        return TimeWork;
-    }
-
-    private Integer countTimeDeveloper(Developer developer) {
-        List<Task> listTask = developer.getlistTask();
-        Integer timeWork = 0;
-        for ( Task task : listTask) {
-            timeWork += task.getTimeTask();
-        }
-        return timeWork;
+    public String printReport(){
+        return employee.toString();
     }
 }
