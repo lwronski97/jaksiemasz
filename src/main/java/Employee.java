@@ -1,3 +1,5 @@
+import java.util.TreeSet;
+
 public interface Employee {
 
     String getName();
@@ -9,4 +11,6 @@ public interface Employee {
     Integer getTimeWork();
     void setParent(Employee employee);
     void updateTimeWork(Integer timeWork);
+    TreeSet<Employee> getSubordinates();
+    void setSubordinates(TreeSet<Employee> subordinates);
 }

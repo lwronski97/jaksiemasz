@@ -2,9 +2,9 @@ public class Main {
 
     public static void main(String[] args)  {
 
-//        CompanyFactory companyFactory = new CompanyFactory();
-//        System.out.println(companyFactory.generateCompany(1000));
-        smallTest();
+        CompanyFactory companyFactory = new CompanyFactory();
+        System.out.println(companyFactory.generateCompany(1000));
+//        smallTest();
 
     }
 

@@ -1,3 +1,5 @@
+import afu.org.checkerframework.checker.oigj.qual.O;
+
 import java.util.Comparator;
 import java.util.TreeSet;
 
@@ -8,7 +10,7 @@ public abstract class AbstractEmployee implements Employee{
     private String indent="";
     private Integer timeWork;
     private Employee parent;
-    public TreeSet<Employee> subordinates;
+    private TreeSet<Employee> subordinates;
 
 
     public AbstractEmployee(String name, EmployeeType role){
@@ -16,6 +18,16 @@ public abstract class AbstractEmployee implements Employee{
         this.role = role;
         this.timeWork = 0;
         this.subordinates = createTreeSetWithComparate();
+    }
+
+    @Override
+    public TreeSet<Employee> getSubordinates() {
+        return this.subordinates;
+    }
+
+    @Override
+    public void setSubordinates(TreeSet<Employee> subordinates){
+       this.subordinates = subordinates;
     }
 
     @Override
@@ -49,10 +61,10 @@ public abstract class AbstractEmployee implements Employee{
             parent.updateTimeWork(timeWork);
             TeamManager parent = (TeamManager) this.parent;
             TreeSet<Employee> temp = createTreeSetWithComparate();
-            for ( Employee e : parent.subordinates){
+            for ( Employee e : parent.getSubordinates()){
                 temp.add(e);
             }
-            parent.subordinates = temp;
+            parent.setSubordinates(temp);
         }
     }
 

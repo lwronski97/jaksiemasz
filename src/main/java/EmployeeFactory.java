@@ -14,8 +14,8 @@ public class EmployeeFactory {
         return new Developer(randomString.getName(),EmployeeType.Developer);
     }
 
-    public TeamManager randomTeamManager() {
-        return new TeamManager(randomString.getName(), EmployeeType.Manager, RANDOM.nextInt(10) +1 );
+    public TeamManager randomTeamManager(EmployeeType employeeType) {
+        return new TeamManager(randomString.getName(), employeeType, RANDOM.nextInt(10) +1 );
     }
 
     public Task randomTask() {
@@ -24,8 +24,9 @@ public class EmployeeFactory {
 
     public List<Employee> randomManagerList(int size){
         List<Employee> listRandomManager = new ArrayList<>();
-        for ( int i = 0; i < size; i++){
-            listRandomManager.add(randomTeamManager());
+        listRandomManager.add(randomTeamManager(EmployeeType.Leader));
+        for ( int i = 1; i < size; i++){
+            listRandomManager.add(randomTeamManager(EmployeeType.Manager));
         }
         return listRandomManager;
     }
